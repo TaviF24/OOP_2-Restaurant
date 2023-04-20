@@ -66,7 +66,7 @@ void Chelner::printagenda() const{
 
 void Chelner::sterge_din_agenda(std::shared_ptr<Client> &ptr) {
     int i=-1;
-    for(auto it:agenda){
+    for(auto &it:agenda){
         i++;
         if(it==ptr) {
             agenda.erase(agenda.begin() + i);
@@ -74,7 +74,7 @@ void Chelner::sterge_din_agenda(std::shared_ptr<Client> &ptr) {
         }
     }
     i=-1;
-    for(auto it:pt_bauturi){
+    for(auto &it:pt_bauturi){
         i++;
         if(it==ptr) {
             pt_bauturi.erase(pt_bauturi.begin() + i);
