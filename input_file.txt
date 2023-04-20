@@ -1,0 +1,18 @@
+rosii 3
+mere 2
+iaurt 1
+.
+ciorba 3
+supa 2
+supa_crema 1
+.
+friptura 7
+sarmale 5
+.
+tiramisu 89
+placinta 6
+.
+apa 2
+fresh 8
+fanta 5.2
+.
