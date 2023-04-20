@@ -36,12 +36,20 @@ int main() {
 
     //std::cout<<ob2.use_count()<<"\n";
     ob.update_agenda(ob2);
-    ob.update_agenda(ob3);
-    ob.printagenda();
-    std::cout<<ob.getPret(ob2,p)<<"\n"<<ob.getPret(ob3,p);
-
-
-
+//    ob.update_ptbauturi(ob2);
+    //ob.update_agenda(ob3);
+    //ob.printagenda();
+    //std::cout<<ob.getPret(ob2,p)<<"\n"<<ob.getPret(ob3,p);
+//    Chelner obj(ob),obj1(nume,4,2);
+//    obj1=obj;
+//    obj.prezentareAngajat(obj);
+//    obj.printagenda();
+//    obj1.prezentareAngajat(obj1);
+//    obj1.printagenda();
+    ob.sterge_din_agenda(ob2);
+    std::cout<<ob2.use_count();
+    std::cout<<"\n"<<(*ob.lista_clienti(ob))[0].use_count()<<" "<<(*ob.lista_client_masa(ob)).begin()->first.use_count();
+        //rezultatul//3 ==> nr chelneri;
     return 0;
 }
 

@@ -4,12 +4,20 @@
 #include "chelneri.h"
 
 Chelner::Chelner(std::string &nume, int varsta, int numarul_comenzilor):
-         Angajat(nume,varsta), numarul_comenzilor(numarul_comenzilor) {}
+         Angajat(nume,varsta), numarul_comenzilor(numarul_comenzilor) {id=++id_chelner;}
 
-Chelner::Chelner(const Chelner &ob): Angajat(ob),numarul_comenzilor(ob.numarul_comenzilor) {}
+Chelner::Chelner(const Chelner &ob): Angajat(ob),numarul_comenzilor(ob.numarul_comenzilor) {
+    id=++id_chelner;
+    agenda=*lista_clienti(ob);
+    pt_bauturi=*lista_bauturi_clienti(ob);
+    client_masa=*lista_client_masa(ob);
+}
 
 Chelner &Chelner::operator=(const Chelner &ob){
     numarul_comenzilor=ob.numarul_comenzilor;
+    agenda=*lista_clienti(ob);
+    pt_bauturi=*lista_bauturi_clienti(ob);
+    client_masa=*lista_client_masa(ob);
     return *this;
 }
 
@@ -38,13 +46,14 @@ void Chelner::prezentareAngajat(Angajat &ob){
     std::cout<<"Buna ziua! Ma numesc "<<ob<<" si sunt chelnerul "<<id<<" la acest restaurant.\n";
 }
 
-void Chelner::update_agenda(std::shared_ptr<Client> &mancare){
-    agenda.push_back(mancare);
-    client_masa[mancare]=mancare->getMasa();
+void Chelner::update_agenda(std::shared_ptr<Client> &client){
+    agenda.push_back(client);
+    client_masa[client]=client->getMasa();
 }
 
-void Chelner::update_ptbauturi(std::shared_ptr<Client> &bauturi) {
-    pt_bauturi.push_back(bauturi);
+void Chelner::update_ptbauturi(std::shared_ptr<Client> &client) {
+    pt_bauturi.push_back(client);
+    client_masa[client]=client->getMasa();
 }
 
 void Chelner::printagenda() const{
@@ -55,13 +64,15 @@ void Chelner::printagenda() const{
     }
 }
 
-void Chelner::sterge_din_agenda(int pozitie) {
-    agenda.erase(agenda.begin()+pozitie);
+void Chelner::sterge_din_agenda(std::shared_ptr<Client> &ptr) {
+    std::remove(agenda.begin(),agenda.end(),ptr);
+    std::remove(pt_bauturi.begin(),pt_bauturi.end(),ptr);
+    client_masa.erase(ptr);
 }
 
 float Chelner::getPret(std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&manager){
     float pret=0;
-    for(auto it=masa->lista_de_mancare()->begin();it!=masa->lista_de_mancare()->end();it++){
+    for(auto it=masa->lista_de_mancare()->begin();it!=masa->lista_de_mancare()->end();it++){  //it se uita in lista de mancare a clientului
         if(find(it->first, *lista_aperitiv(*manager)))
             pret=pret+(*lista_aperitiv(*manager))[it->first]*(it->second);
         else
@@ -79,6 +90,18 @@ float Chelner::getPret(std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&ma
             pret=pret+( (*lista_bauturi(*manager))[it->first] )*(it->second);
     }
     return pret;
+}   //calculez pretul clientului
+
+const std::vector<std::shared_ptr<Client>> *Chelner::lista_clienti(const Chelner &ob) const {
+    return &ob.agenda;
+}
+
+const std::vector<std::shared_ptr<Client>> *Chelner::lista_bauturi_clienti(const Chelner &ob) const {
+    return &ob.pt_bauturi;
+}
+
+const std::map<std::shared_ptr<Client>, int> *Chelner::lista_client_masa(const Chelner &ob) const {
+    return &ob.client_masa;
 }
 
 Chelner::~Chelner()=default;
