@@ -65,8 +65,22 @@ void Chelner::printagenda() const{
 }
 
 void Chelner::sterge_din_agenda(std::shared_ptr<Client> &ptr) {
-    std::remove(agenda.begin(),agenda.end(),ptr);
-    std::remove(pt_bauturi.begin(),pt_bauturi.end(),ptr);
+    int i=-1;
+    for(auto it:agenda){
+        i++;
+        if(it==ptr) {
+            agenda.erase(agenda.begin() + i);
+            break;
+        }
+    }
+    i=-1;
+    for(auto it:pt_bauturi){
+        i++;
+        if(it==ptr) {
+            pt_bauturi.erase(pt_bauturi.begin() + i);
+            break;
+        }
+    }
     client_masa.erase(ptr);
 }
 

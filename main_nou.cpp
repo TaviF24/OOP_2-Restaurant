@@ -36,11 +36,11 @@ int main() {
 
     //std::cout<<ob2.use_count()<<"\n";
     ob.update_agenda(ob2);
-//    ob.update_ptbauturi(ob2);
+    ob.update_ptbauturi(ob2);
     //ob.update_agenda(ob3);
     //ob.printagenda();
     //std::cout<<ob.getPret(ob2,p)<<"\n"<<ob.getPret(ob3,p);
-//    Chelner obj(ob),obj1(nume,4,2);
+    Chelner obj(ob),obj1(nume,4,2);
 //    obj1=obj;
 //    obj.prezentareAngajat(obj);
 //    obj.printagenda();
