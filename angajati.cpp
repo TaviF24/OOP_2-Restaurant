@@ -28,7 +28,7 @@ std::ostream &operator<<(std::ostream &out,const Angajat &ob){
 }
 
 void Angajat::afisare(std::ostream &out) const {
-    out<<nume<<"\n"<<varsta;
+    out<<nume;
 }
 
 Angajat::~Angajat()=default;

@@ -5,13 +5,14 @@
 #ifndef OOP_CHELNERI_H
 #define OOP_CHELNERI_H
 
+#include "manager.h"
 #include "angajati.h"
 #include "clienti.h"
 
 class Chelner: public Angajat {
     private:
         static int id_chelner;
-        int id;
+        int id=0;
         int numarul_comenzilor;
         std::vector<std::shared_ptr<Client>>agenda;
         std::vector<std::shared_ptr<Client>>pt_bauturi;
@@ -29,9 +30,9 @@ class Chelner: public Angajat {
 
         void decrementNrCOM();
 
-        int getIdChelner() const;
+        int getId() const override;
 
-        void setId();
+        void setId() override;
 
         void prezentareAngajat(Angajat &ob)override;
 
@@ -41,7 +42,9 @@ class Chelner: public Angajat {
 
         void printagenda() const;
 
-        float getPret(std::shared_ptr<Client> &masa);
+        void sterge_din_agenda(int pozitie);
+
+        float getPret(std::shared_ptr<Client> &masa, std::unique_ptr<Manager> &manager);
 
         ~Chelner();
 };

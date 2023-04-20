@@ -11,6 +11,7 @@
 class Barman: public Angajat{
     private:
         static int id_barman;
+        int id=0;
         int numarul_bauturilor_facute;
         std::vector<std::shared_ptr<Chelner>>agenda;
     public:
@@ -25,17 +26,17 @@ class Barman: public Angajat{
         void incrementNrBAUTURI();
     
         void decrementNrBAUTURI();
-    
-        static int getIdBarman();
-    
-        static void incrementIdBarman();
-    
-        static void decrementIdBarman();
+
+        int getId() const override;
+
+        void setId() override;
     
         void prezentareAngajat(Angajat &ob) override;
 
-        void update_agenda(std::shared_ptr<Chelner> &mancare);
-    
+        void update_agenda(std::shared_ptr<Chelner> &bautura);
+
+        void sterge_din_agenda(int pozitie);
+
         ~Barman();
 };
 

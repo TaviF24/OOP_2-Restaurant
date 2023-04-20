@@ -8,7 +8,9 @@
 #include<iostream>
 #include<fstream>
 #include<vector>
+#include<string>
 #include<map>
+#include<memory>
 
 class Meniu{
     private:
@@ -18,19 +20,18 @@ class Meniu{
 
         virtual void afis();
 
-        void updateMeniu();
 
-        bool find(std::string mancare,std::map<std::string,float>dictionar);
+        static bool find(const std::string &mancare,std::map<std::string,float>dictionar);
 
-        std::map<std::string,float> *lista_aperitiv();
+        static std::map<std::string,float> *lista_aperitiv(Meniu &ob);
 
-        std::map<std::string,float> *lista_fel1();
+        static std::map<std::string,float> *lista_fel1(Meniu &ob);
 
-        std::map<std::string,float> *lista_fel2();
+        static std::map<std::string,float> *lista_fel2(Meniu &ob);
 
-        std::map<std::string,float> *lista_desert();
+        static std::map<std::string,float> *lista_desert(Meniu &ob);
 
-        std::map<std::string,float> *lista_bauturi();
+        static std::map<std::string,float> *lista_bauturi(Meniu &ob);
 
         virtual ~Meniu();
 };

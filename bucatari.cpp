@@ -8,9 +8,9 @@
 #include<iostream>
 
 Bucatar::Bucatar(std::string &nume, int varsta, int numarul_farfuriilor_facute):
-        Angajat(nume,varsta), numarul_farfuriilor_facute(numarul_farfuriilor_facute) { incrementIdBucatar(); }
+        Angajat(nume,varsta), numarul_farfuriilor_facute(numarul_farfuriilor_facute) { }
 
-Bucatar::Bucatar(const Bucatar &ob): Angajat(ob),numarul_farfuriilor_facute(ob.numarul_farfuriilor_facute) {incrementIdBucatar(); }
+Bucatar::Bucatar(const Bucatar &ob): Angajat(ob),numarul_farfuriilor_facute(ob.numarul_farfuriilor_facute) { }
 
 Bucatar &Bucatar::operator=(const Bucatar &ob){
     numarul_farfuriilor_facute=ob.numarul_farfuriilor_facute;
@@ -29,20 +29,24 @@ void Bucatar::decrementNrFAR() {
     --numarul_farfuriilor_facute;
 }
 
-int Bucatar::getIdBucatar() {
-    return id_bucatar;
+int Bucatar::getId() const{
+    return id;
 }
 
-void Bucatar::incrementIdBucatar() {
-    ++id_bucatar;
-}
-
-void Bucatar::decrementIdBucatar() {
-    --id_bucatar;
+void Bucatar::setId() {
+    id=++id_bucatar;
 }
 
 void Bucatar::prezentareAngajat(Angajat &ob) {
     std::cout<<"Buna ziua! Ma numesc "<<ob.getNumeAngajat()<<" si sunt bucatarul "<<id_bucatar<<" la acest restaurant.\n";
+}
+
+void Bucatar::update_agenda(std::shared_ptr<Chelner> &mancare){
+    agenda.push_back(mancare);
+}
+
+void Bucatar::sterge_din_agenda(int pozitie) {
+    agenda.erase(agenda.begin()+pozitie);
 }
 
 Bucatar::~Bucatar()=default;

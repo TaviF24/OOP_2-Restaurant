@@ -3,7 +3,7 @@
 //
 #include "clienti.h"
 
-Client::Client(){setMasa();};
+Client::Client()=default;
 
 Client::Client(std::map<std::string, int> &lista_mancare) : lista_mancare(lista_mancare) {}
 
@@ -44,13 +44,13 @@ void Client::setMasa(){
 int Client::getMasa()const{
     return masa;
 }
-int Client::getcantitateMancare(std::string mancare){
-    return lista_mancare[mancare];
-}
-
-int Client::getcantitateBautura(std::string bautura){
-    return lista_bauturi[bautura];
-}
+//int Client::getcantitateMancare(const std::string &mancare){
+//    return lista_mancare[mancare];
+//}
+//
+//int Client::getcantitateBautura(const std::string &bautura){
+//    return lista_bauturi[bautura];
+//}
 
 std::map<std::string, int> *Client::lista_de_mancare() {
     return &lista_mancare;

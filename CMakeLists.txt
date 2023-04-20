@@ -42,8 +42,7 @@ endif()
 
 # NOTE: update executable name in .github/workflows/cmake.yml when changing name here
 add_executable(${PROJECT_NAME} main.cpp)
-add_executable(FILE0 main_nou.cpp angajati.cpp angajati.h chelneri.cpp chelneri.h bucatari.cpp bucatari.h barmani.cpp barmani.h clienti.cpp clienti.h)
-add_executable(FILE1 meniu_restaurant.cpp meniu_restaurant.h)
+add_executable(FILE0 main_nou.cpp angajati.cpp angajati.h chelneri.cpp chelneri.h bucatari.cpp bucatari.h barmani.cpp barmani.h clienti.cpp clienti.h meniu_restaurant.cpp meniu_restaurant.h manager.cpp manager.h)
 ###############################################################################
 
 # target definitions

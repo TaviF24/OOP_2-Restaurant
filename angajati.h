@@ -5,8 +5,7 @@
 #ifndef OOP_ANGAJATI_H
 #define OOP_ANGAJATI_H
 
-#include <iostream>
-#include <memory>
+
 #include"meniu_restaurant.h"
 
 class Angajat:public Meniu{
@@ -29,6 +28,10 @@ class Angajat:public Meniu{
         virtual void afisare(std::ostream &out) const;
 
         virtual void prezentareAngajat(Angajat &ob)=0;
+
+        virtual int getId() const=0;
+
+        virtual void setId()=0;
 
         virtual ~Angajat();
 

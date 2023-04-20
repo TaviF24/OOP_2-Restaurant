@@ -7,68 +7,26 @@ Meniu::Meniu()=default;
 void Meniu::afis() {
     std::cout<<"Aperitiv: ";
     for(std::map<std::string,float>::iterator i=aperitiv.begin();i!=aperitiv.end();i++)
-        std::cout<<i->first<<" "<<i->second<<" ";
+        std::cout<<i->first<<" "<<i->second<<" RON ";
     std::cout<<"\n";
     std::cout<<"Fel 1: ";
     for(std::map<std::string,float>::iterator i=fel1.begin();i!=fel1.end();i++)
-        std::cout<<i->first<<" "<<i->second<<" ";
+        std::cout<<i->first<<" "<<i->second<<" RON ";
     std::cout<<"\n";
     std::cout<<"Fel 2: ";
     for(std::map<std::string,float>::iterator i=fel2.begin();i!=fel2.end();i++)
-        std::cout<<i->first<<" "<<i->second<<" ";
+        std::cout<<i->first<<" "<<i->second<<" RON ";
     std::cout<<"\n";
     std::cout<<"Desert: ";
     for(std::map<std::string,float>::iterator i=desert.begin();i!=desert.end();i++)
-        std::cout<<i->first<<" "<<i->second<<" ";
+        std::cout<<i->first<<" "<<i->second<<" RON ";
     std::cout<<"\n";
     std::cout<<"Bauturi: ";
     for(std::map<std::string,float>::iterator i=bauturi.begin();i!=bauturi.end();i++)
-        std::cout<<i->first<<" "<<i->second<<" ";
+        std::cout<<i->first<<" "<<i->second<<" RON ";
 }
 
-void Meniu::updateMeniu() {
-    std::string mancare;
-    float pret;
-    std::ifstream f("input.txt");
-
-    f>>mancare;
-    while(mancare!="."){
-        f>>pret;
-        aperitiv[mancare]=pret;
-        f>>mancare;
-    }
-    mancare="";
-    f>>mancare;
-    while(mancare!="."){
-        f>>pret;
-        fel1[mancare]=pret;
-        f>>mancare;
-    }
-    mancare="";
-    f>>mancare;
-    while(mancare!="."){
-        f>>pret;
-        fel2[mancare]=pret;
-        f>>mancare;
-    }
-    mancare="";
-    f>>mancare;
-    while(mancare!="."){
-        f>>pret;
-        desert[mancare]=pret;
-        f>>mancare;
-    }
-    mancare="";
-    f>>mancare;
-    while(mancare!="."){
-        f>>pret;
-        bauturi[mancare]=pret;
-        f>>mancare;
-    }
-    f.close();
-}
-
-bool Meniu::find(std::string mancare, std::map<std::string, float> dictionar) {
+bool Meniu::find(const std::string &mancare, std::map<std::string, float> dictionar) {
     auto i=dictionar.begin();
     while(i!=dictionar.end()){
         if(i->first==mancare)
@@ -78,34 +36,34 @@ bool Meniu::find(std::string mancare, std::map<std::string, float> dictionar) {
     return false;
 }
 
-std::map<std::string, float> *Meniu::lista_aperitiv() {
-    return &aperitiv;
+std::map<std::string, float> *Meniu::lista_aperitiv(Meniu &ob) {
+    return &ob.aperitiv;
 }
 
-std::map<std::string, float> *Meniu::lista_fel1() {
-    return &fel1;
+std::map<std::string, float> *Meniu::lista_fel1(Meniu &ob) {
+    return &ob.fel1;
 }
 
-std::map<std::string, float> *Meniu::lista_fel2() {
-    return &fel2;
+std::map<std::string, float> *Meniu::lista_fel2(Meniu &ob) {
+    return &ob.fel2;
 }
 
-std::map<std::string, float> *Meniu::lista_desert() {
-    return &desert;
+std::map<std::string, float> *Meniu::lista_desert(Meniu &ob) {
+    return &ob.desert;
 }
 
-std::map<std::string, float> *Meniu::lista_bauturi() {
-    return &bauturi;
+std::map<std::string, float> *Meniu::lista_bauturi(Meniu &ob) {
+    return &ob.bauturi;
 }
 
 Meniu::~Meniu()=default;
 
 
 
-int main(){
-    Meniu ob;
-    ob.updateMeniu();
-    ob.afis();
-
-    return 0;
-}
+//int main(){
+//    Meniu ob;
+//    ob.updateMeniu();
+//    ob.afis();
+//
+//    return 0;
+//}

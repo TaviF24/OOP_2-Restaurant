@@ -5,9 +5,7 @@
 #ifndef OOP_Client_H
 #define OOP_Client_H
 
-#include<iostream>
-#include<string>
-#include<map>
+
 #include"meniu_restaurant.h"
 
 class Client:public Meniu {
@@ -15,7 +13,7 @@ private:
     std::map<std::string, int> lista_mancare;
     std::map<std::string, int> lista_bauturi;
     static int nr_masa;
-    int masa;
+    int masa=0;
 public:
     Client();
 
@@ -33,9 +31,9 @@ public:
 
     int getMasa()const;
 
-    int getcantitateMancare(std::string mancare);
-
-    int getcantitateBautura(std::string bautura);
+//    int getcantitateMancare(const std::string &mancare);
+//
+//    int getcantitateBautura(const std::string &bautura);
 
     std::map<std::string,int> *lista_de_mancare();
 
