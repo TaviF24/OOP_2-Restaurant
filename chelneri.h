@@ -13,7 +13,7 @@ class Chelner: public Angajat {
     private:
         static int id_chelner;
         int id=0;
-        int numarul_comenzilor=0;
+        int numarul_comenzilor;
         std::vector<std::shared_ptr<Client>>agenda;
         std::vector<std::shared_ptr<Client>>pt_bauturi;
         std::map<std::shared_ptr<Client>,int>client_masa;
@@ -28,7 +28,7 @@ class Chelner: public Angajat {
 
         void incrementNrCOM();
 
-        void decrementNrCOM();
+//        void decrementNrCOM();
 
         int getId() const override;
 
@@ -45,6 +45,8 @@ class Chelner: public Angajat {
         void sterge_din_agenda(std::shared_ptr<Client> &ptr);
 
         float getPret(std::shared_ptr<Client> &masa, std::unique_ptr<Manager> &manager);
+
+        void achitare(float suma_de_bani, std::shared_ptr<Client> &masa, std::unique_ptr<Manager>&manager);
 
         const std::vector<std::shared_ptr<Client>> *lista_clienti(const Chelner &ob)const;
 

@@ -13,7 +13,7 @@ class Angajat:public Meniu{
         std::string nume;
         int varsta;
     public:
-        Angajat(std::string nume,int varsta);
+        Angajat(std::string &nume,int varsta);
 
         const std::string &getNumeAngajat() const;
 

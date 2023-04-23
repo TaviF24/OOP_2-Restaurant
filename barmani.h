@@ -12,20 +12,20 @@ class Barman: public Angajat{
     private:
         static int id_barman;
         int id=0;
-        int numarul_bauturilor_facute;
+        int numarul_meselor_cu_bautura_facute;
         std::vector<std::shared_ptr<Chelner>>agenda;
     public:
-        Barman(std::string &nume,int varsta, int numarul_bauturilor_facute);
+        Barman(std::string &nume,int varsta, int numarul_bauturilor_per_masa_facute);
     
         Barman(const Barman &ob);
     
         Barman &operator=(const Barman &ob);
     
-        int getNumarulbauturilor() const;
+        int getNumarul_meselor_cu_bautura_facute() const;
     
-        void incrementNrBAUTURI();
+        void incrementNrMESEcuBAUT();
     
-        void decrementNrBAUTURI();
+//        void decrementNrBAUTURI();
 
         int getId() const override;
 
@@ -35,7 +35,7 @@ class Barman: public Angajat{
 
         void update_agenda(std::shared_ptr<Chelner> &bautura);
 
-        void sterge_din_agenda(int pozitie);
+        void sterge_din_agenda(std::shared_ptr<Chelner> &ptr);
 
         ~Barman();
 };

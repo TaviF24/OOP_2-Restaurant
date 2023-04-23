@@ -4,7 +4,7 @@
 #include "angajati.h"
 #include <iostream>
 
-Angajat::Angajat(std::string nume, int varsta):nume(nume),varsta(varsta) {}
+Angajat::Angajat(std::string &nume, int varsta):nume(nume),varsta(varsta) {}
 
 const std::string &Angajat::getNumeAngajat() const {
     return nume;

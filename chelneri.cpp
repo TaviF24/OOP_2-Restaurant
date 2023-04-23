@@ -8,9 +8,9 @@ Chelner::Chelner(std::string &nume, int varsta, int numarul_comenzilor):
 
 Chelner::Chelner(const Chelner &ob): Angajat(ob),numarul_comenzilor(ob.numarul_comenzilor) {
     id=++id_chelner;
-    agenda=*lista_clienti(ob);
-    pt_bauturi=*lista_bauturi_clienti(ob);
-    client_masa=*lista_client_masa(ob);
+    agenda=ob.agenda;
+    pt_bauturi=ob.pt_bauturi;
+    client_masa=ob.client_masa;
 }
 
 Chelner &Chelner::operator=(const Chelner &ob){
@@ -29,16 +29,15 @@ void Chelner::incrementNrCOM() {
     ++numarul_comenzilor;
 }
 
-void Chelner::decrementNrCOM() {
-    --numarul_comenzilor;
-}
+//void Chelner::decrementNrCOM() {
+//    --numarul_comenzilor;
+//}
 
 int Chelner::getId() const{
     return id;
 }
 
 void Chelner::setId() {
-    std::cout<<"da\n";
     id=++id_chelner;
 }
 
@@ -105,6 +104,14 @@ float Chelner::getPret(std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&ma
     }
     return pret;
 }   //calculez pretul clientului
+
+void Chelner::achitare(float suma_de_bani,std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&manager) {
+    if(suma_de_bani== getPret(masa,manager)){
+        std::cout<<"Multumesc! O zi frumoasa!\n";
+        sterge_din_agenda(masa);
+        incrementNrCOM();
+    }
+}//si aici inca o eroare
 
 const std::vector<std::shared_ptr<Client>> *Chelner::lista_clienti(const Chelner &ob) const {
     return &ob.agenda;

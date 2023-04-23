@@ -7,27 +7,28 @@
 #include "bucatari.h"
 #include<iostream>
 
-Bucatar::Bucatar(std::string &nume, int varsta, int numarul_farfuriilor_facute):
-        Angajat(nume,varsta), numarul_farfuriilor_facute(numarul_farfuriilor_facute) { }
+Bucatar::Bucatar(std::string &nume, int varsta, int numarul_meselor_facute):
+        Angajat(nume,varsta), numarul_meselor_facute(numarul_meselor_facute) {id=++id_bucatar; }
 
-Bucatar::Bucatar(const Bucatar &ob): Angajat(ob),numarul_farfuriilor_facute(ob.numarul_farfuriilor_facute) { }
+Bucatar::Bucatar(const Bucatar &ob): Angajat(ob),numarul_meselor_facute(ob.numarul_meselor_facute) {id=++id_bucatar; }
 
 Bucatar &Bucatar::operator=(const Bucatar &ob){
-    numarul_farfuriilor_facute=ob.numarul_farfuriilor_facute;
+    numarul_meselor_facute=ob.numarul_meselor_facute;
+    agenda=ob.agenda;
     return *this;
 }
 
-int Bucatar::getNumarulFarfuriilor() const {
-    return numarul_farfuriilor_facute;
+int Bucatar::getNumarulMeselor() const {
+    return numarul_meselor_facute;
 }
 
-void Bucatar::incrementNrFAR() {
-    ++numarul_farfuriilor_facute;
+void Bucatar::incrementNrMESE() {
+    ++numarul_meselor_facute;
 }
 
-void Bucatar::decrementNrFAR() {
-    --numarul_farfuriilor_facute;
-}
+//void Bucatar::decrementNrFAR() {
+//    --numarul_farfuriilor_facute;
+//}
 
 int Bucatar::getId() const{
     return id;
@@ -38,16 +39,25 @@ void Bucatar::setId() {
 }
 
 void Bucatar::prezentareAngajat(Angajat &ob) {
-    std::cout<<"Buna ziua! Ma numesc "<<ob.getNumeAngajat()<<" si sunt bucatarul "<<id_bucatar<<" la acest restaurant.\n";
+    std::cout<<"Buna ziua! Ma numesc "<<ob<<" si sunt bucatarul "<<id<<" la acest restaurant.\n";
 }
 
 void Bucatar::update_agenda(std::shared_ptr<Chelner> &mancare){
     agenda.push_back(mancare);
 }
 
-void Bucatar::sterge_din_agenda(int pozitie) {
-    agenda.erase(agenda.begin()+pozitie);
-}
+void Bucatar::sterge_din_agenda(std::shared_ptr<Chelner> &ptr) {
+    int i=-1;
+    for(auto &it:agenda){
+        i++;
+        if(it==ptr) {
+            std::cout<<"Masa este gata, chelner "<<ptr->getId()<<"!\n";
+            incrementNrMESE();
+            agenda.erase(agenda.begin() + i);
+            break;
+        }
+    }
+} //aici sa se pune o eroare
 
 Bucatar::~Bucatar()=default;
 
