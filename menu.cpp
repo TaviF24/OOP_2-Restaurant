@@ -49,7 +49,7 @@ else
                         std::cout << "   ● Varsta lui va fi: "; std::cin >> varsta;
 
                         try{
-                            manager = std::move(std::make_unique<Manager>(nume));
+                            manager = std::make_unique<Manager>(nume);
                             manager->setVarsta(varsta);
                             ind_manag = true;
                             ok++;
@@ -188,9 +188,11 @@ else
                     if(tasta==2){
                         std::cout<<"Alegeti din clientii existenti:\n";
                         if(!clienti_existenti.empty()) {
-                            for (auto i = 0; i < clienti_existenti.size(); i++)
-                                std::cout << "   " << i + 1 << " " << clienti_existenti[i]->getNume()
-                                          << " ; Numarul mesei: " << clienti_existenti[i]->getMasa() << "\n";
+                            int j=0;
+                            for (auto &i:clienti_existenti){
+                                j++;
+                                std::cout << "   " << j << " " << clienti_existenti[j-1]->getNume()
+                                          << " ; Numarul mesei: " << i->getMasa() << "\n";}
                             std::cin>>tasta;
                             client_curent=clienti_existenti[tasta-1];
                         }
@@ -223,9 +225,11 @@ else
                             tasta_mod = 2;
                             std::cout << "\nModul s-a schimbat in chelner.\n";
                             std::cout << "Alegeti un chelner dintre cei existenti:\n";
-                            for (auto i = 0; i < chelneri.size(); i++)
-                                std::cout << "   " << i + 1 << " " << chelneri[i]->getNumeAngajat()
-                                          << " ; Id: " << chelneri[i]->getId() << "\n";
+                            int j=0;
+                            for (auto &i:chelneri){
+                                j++;
+                                std::cout << "   " << j << " " << chelneri[j-1]->getNumeAngajat()
+                                          << " ; Id: " << i->getId() << "\n";}
                             std::cin >> tasta;
                             chelner_curent = chelneri[tasta - 1];
                             std::cout << "Ati ales chelnerul " << chelner_curent->getNumeAngajat() << " cu ID-ul "
@@ -294,9 +298,12 @@ else
                     std::cin>>tasta;
 
                     if(tasta==1){
-                        for (auto i = 0; i < chelneri.size(); i++)
-                            std::cout << "   " << i + 1 << " " << chelneri[i]->getNumeAngajat()
-                                      << " ; Id: " << chelneri[i]->getId() << "\n";
+                        int j=0;
+                        for (auto &i:chelneri){
+                            j++;
+                            std::cout << "   " << j << " " << chelneri[j-1]->getNumeAngajat()
+                                      << " ; Id: " << i->getId() << "\n";
+                        }
                         std::cin>>tasta;
                         chelner_curent=chelneri[tasta-1];
                     }
