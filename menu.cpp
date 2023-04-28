@@ -49,7 +49,7 @@ else
                         std::cout << "   ● Varsta lui va fi: "; std::cin >> varsta;
 
                         try{
-                            manager = std::move( std::make_unique<Manager>(nume));
+                            manager = std::move(std::make_unique<Manager>(nume));
                             manager->setVarsta(varsta);
                             ind_manag = true;
                             ok++;
