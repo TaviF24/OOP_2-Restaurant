@@ -4,8 +4,8 @@
 #include "barmani.h"
 #include<iostream>
 
-Barman::Barman(std::string &nume, int varsta, int numarul_maselor_cu_bautura_facute):
-        Angajat(nume,varsta), numarul_meselor_cu_bautura_facute(numarul_meselor_cu_bautura_facute) {id=++id_barman; }
+Barman::Barman(std::string &nume, int numarul_meselor_cu_bautura_facute):
+        Angajat(nume), numarul_meselor_cu_bautura_facute(numarul_meselor_cu_bautura_facute) {id=++id_barman; }
 
 Barman::Barman(const Barman &ob): Angajat(ob),numarul_meselor_cu_bautura_facute(ob.numarul_meselor_cu_bautura_facute) {id=++id_barman; }
 

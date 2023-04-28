@@ -7,8 +7,8 @@
 #include "bucatari.h"
 #include<iostream>
 
-Bucatar::Bucatar(std::string &nume, int varsta, int numarul_meselor_facute):
-        Angajat(nume,varsta), numarul_meselor_facute(numarul_meselor_facute) {id=++id_bucatar; }
+Bucatar::Bucatar(std::string &nume, int numarul_meselor_facute):
+        Angajat(nume), numarul_meselor_facute(numarul_meselor_facute) {id=++id_bucatar; }
 
 Bucatar::Bucatar(const Bucatar &ob): Angajat(ob),numarul_meselor_facute(ob.numarul_meselor_facute) {id=++id_bucatar; }
 

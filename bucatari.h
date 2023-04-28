@@ -15,7 +15,7 @@ class Bucatar: public Angajat{
         int numarul_meselor_facute;
         std::vector<std::shared_ptr<Chelner>>agenda;
 public:
-        Bucatar(std::string &nume,int varsta, int numarul_meselor_facute);
+        Bucatar(std::string &nume, int numarul_meselor_facute);
 
         Bucatar(const Bucatar &ob);
 

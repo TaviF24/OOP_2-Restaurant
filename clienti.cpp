@@ -7,6 +7,8 @@ Client::Client()=default;
 
 Client::Client(std::map<std::string, int> &lista_mancare) : lista_mancare(lista_mancare) {}
 
+Client::Client(std::string &nume):nume(nume) {}
+
 bool Client::find(std::string &mancare) {
     auto i = lista_mancare.begin();
     while (i != lista_mancare.end()) {
@@ -37,12 +39,21 @@ void Client::afis(){
     }
 }
 
+void Client::incrementMasa() {
+    ++nr_masa;
+}
+
 void Client::setMasa(){
-    masa=++nr_masa;
+    incrementMasa();
+    masa=nr_masa;
 }
 
 int Client::getMasa()const{
     return masa;
+}
+
+std::string Client::getNume() const {
+    return nume;
 }
 //int Client::getcantitateMancare(const std::string &mancare){
 //    return lista_mancare[mancare];

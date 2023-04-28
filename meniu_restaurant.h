@@ -11,6 +11,8 @@
 #include<string>
 #include<map>
 #include<memory>
+#include "exception_1.h"
+#include "exception_2.h"
 
 class Meniu{
     private:
@@ -20,8 +22,7 @@ class Meniu{
 
         virtual void afis();
 
-
-        static bool find(const std::string &mancare,std::map<std::string,float>dictionar);
+        static bool find(const std::string &mancare, std::map<std::string,float>dictionar);
 
         static std::map<std::string,float> *lista_aperitiv(Meniu &ob);
 

@@ -2,9 +2,8 @@
 // Created by Octavian Farcasi on 18.04.2023.
 //
 #include "angajati.h"
-#include <iostream>
 
-Angajat::Angajat(std::string &nume, int varsta):nume(nume),varsta(varsta) {}
+Angajat::Angajat(std::string &nume):nume(nume) {}
 
 const std::string &Angajat::getNumeAngajat() const {
     return nume;
@@ -19,6 +18,8 @@ void Angajat::setNume(const std::string &nume_nou) {
 }
 
 void Angajat::setVarsta(int varsta_noua) {
+    if(varsta_noua<18)
+        throw Nu_are_varsta_necesara();
     varsta=varsta_noua;
 }
 

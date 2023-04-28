@@ -12,13 +12,15 @@ class Manager:public Meniu{
         std::string nume;
         int varsta;
     public:
-        Manager(std::string &nume, int varsta);
+        Manager(std::string &nume);
 
         static void updateMeniu(Manager &ob);
 
         friend std::ostream &operator<<(std::ostream &out, const Manager &ob);
 
         void prezentare_manager(Manager &ob)const;
+
+        void setVarsta(int varsta_noua);
 
         ~Manager();
 };

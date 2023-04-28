@@ -3,8 +3,8 @@
 //
 #include "chelneri.h"
 
-Chelner::Chelner(std::string &nume, int varsta, int numarul_comenzilor):
-         Angajat(nume,varsta), numarul_comenzilor(numarul_comenzilor) {id=++id_chelner;}
+Chelner::Chelner(std::string &nume, int numarul_comenzilor):
+         Angajat(nume), numarul_comenzilor(numarul_comenzilor) {id=++id_chelner;}
 
 Chelner::Chelner(const Chelner &ob): Angajat(ob),numarul_comenzilor(ob.numarul_comenzilor) {
     id=++id_chelner;
@@ -105,12 +105,17 @@ float Chelner::getPret(std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&ma
     return pret;
 }   //calculez pretul clientului
 
+//exceptie aici
+
 void Chelner::achitare(float suma_de_bani,std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&manager) {
-    if(suma_de_bani== getPret(masa,manager)){
+    if(suma_de_bani>= getPret(masa,manager)){
         std::cout<<"Multumesc! O zi frumoasa!\n";
         sterge_din_agenda(masa);
         incrementNrCOM();
     }
+    else
+        throw Prea_mica_suma();
+
 }//si aici inca o eroare
 
 const std::vector<std::shared_ptr<Client>> *Chelner::lista_clienti(const Chelner &ob) const {

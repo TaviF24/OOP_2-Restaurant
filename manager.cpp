@@ -3,7 +3,7 @@
 //
 #include "manager.h"
 
-Manager::Manager(std::string &nume, int varsta):Meniu(),nume(nume),varsta(varsta) {}
+Manager::Manager(std::string &nume):Meniu(),nume(nume) {}
 
 void Manager::updateMeniu(Manager &ob) {
     std::string mancare;
@@ -54,6 +54,12 @@ std::ostream &operator<<(std::ostream &out,const Manager &ob){
 
 void Manager::prezentare_manager(Manager &ob)const{
     std::cout<<ob;
+}
+
+void Manager::setVarsta(int varsta_noua) {
+    if(varsta_noua<18)
+        throw Nu_are_varsta_necesara();
+    varsta=varsta_noua;
 }
 
 Manager::~Manager()=default;

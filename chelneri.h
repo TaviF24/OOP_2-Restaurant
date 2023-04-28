@@ -18,7 +18,7 @@ class Chelner: public Angajat {
         std::vector<std::shared_ptr<Client>>pt_bauturi;
         std::map<std::shared_ptr<Client>,int>client_masa;
     public:
-        Chelner(std::string &nume,int varsta,int numarul_comenzilor);
+        Chelner(std::string &nume,int numarul_comenzilor);
 
         Chelner(const Chelner &ob);
 
