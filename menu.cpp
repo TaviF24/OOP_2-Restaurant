@@ -303,11 +303,11 @@ else
                     if(tasta==2){
                         std::cout<<"Masa clientului este: ";std::cin>>nrmasa;
                         float suma=0;
-                        for(auto i=0;i<clienti_existenti.size();i++)
-                            if(clienti_existenti[i]->getMasa()==nrmasa)
+                        for(auto & i : clienti_existenti)
+                            if(i->getMasa()==nrmasa)
                                 try{
-                                    std::cout<<"Aveti de platit:"<<chelner_curent->getPret(clienti_existenti[i],manager)<<"RON. \n Cat alegeti sa platiti?\n";std::cin>>suma;
-                                    chelner_curent->achitare(suma,clienti_existenti[i],manager);
+                                    std::cout<<"Aveti de platit:"<<chelner_curent->getPret(i,manager)<<"RON. \n Cat alegeti sa platiti?\n";std::cin>>suma;
+                                    chelner_curent->achitare(suma,i,manager);
                                 }
                                 catch(const Prea_mica_suma &ob){
                                     std::cout<<ob.what();
