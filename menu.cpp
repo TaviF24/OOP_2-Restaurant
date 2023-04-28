@@ -49,7 +49,7 @@ else
                         std::cout << "   ● Varsta lui va fi: "; std::cin >> varsta;
 
                         try{
-                            manager = std::move(std::make_unique<Manager>(nume));
+                            manager = std::move( std::make_unique<Manager>(nume));
                             manager->setVarsta(varsta);
                             ind_manag = true;
                             ok++;
@@ -188,7 +188,7 @@ else
                     if(tasta==2){
                         std::cout<<"Alegeti din clientii existenti:\n";
                         if(!clienti_existenti.empty()) {
-                            for (auto i = 0; i < clienti_existenti.size(); i++)
+                            for (auto i = 0; i < clienti_existenti.size(); i++ )
                                 std::cout << "   " << i + 1 << " " << clienti_existenti[i]->getNume()
                                           << " ; Numarul mesei: " << clienti_existenti[i]->getMasa() << "\n";
                             std::cin>>tasta;
@@ -223,7 +223,7 @@ else
                             tasta_mod = 2;
                             std::cout << "\nModul s-a schimbat in chelner.\n";
                             std::cout << "Alegeti un chelner dintre cei existenti:\n";
-                            for (auto i = 0; i < chelneri.size(); i++)
+                            for (auto i = 0; i < chelneri.size(); i++ )
                                 std::cout << "   " << i + 1 << " " << chelneri[i]->getNumeAngajat()
                                           << " ; Id: " << chelneri[i]->getId() << "\n";
                             std::cin >> tasta;
@@ -294,7 +294,7 @@ else
                     std::cin>>tasta;
 
                     if(tasta==1){
-                        for (auto i = 0; i < chelneri.size(); i++)
+                        for (auto i = 0; i < chelneri.size(); i++ )
                             std::cout << "   " << i + 1 << " " << chelneri[i]->getNumeAngajat()
                                       << " ; Id: " << chelneri[i]->getId() << "\n";
                         std::cin>>tasta;

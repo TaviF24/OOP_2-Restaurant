@@ -10,7 +10,7 @@ void Rezervare::insert_in_tabel(const std::string &nume) {
 }
 
 bool Rezervare::verif_si_scoatere(const std::string &nume) {
-    for(auto i=0;i<tabel_cu_rezervari.size();i++)
+    for(auto i=0;i<tabel_cu_rezervari.size();i++ )
         if(tabel_cu_rezervari[i]==nume){
             tabel_cu_rezervari.erase(tabel_cu_rezervari.begin() + i);
             return true;
