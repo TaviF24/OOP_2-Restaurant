@@ -20,14 +20,14 @@ bool Client::find(std::string &mancare) {
 }
 
 void Client::update_lista(std::string &mancare) {
-    if (find(mancare) == true)
+    if (find(mancare))
         lista_mancare[mancare]++;
     else
         lista_mancare[mancare] = 1;
 }
 
 void Client::update_lista_bauturi(std::string &bauturi) {
-    if (find(bauturi) == true)
+    if (find(bauturi))
         lista_mancare[bauturi]++;
     else
         lista_mancare[bauturi] = 1;

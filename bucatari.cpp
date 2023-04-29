@@ -1,11 +1,7 @@
 //
 // Created by Octavian Farcasi on 18.04.2023.
 //
-//
-// Created by Octavian Farcasi on 18.04.2023.
-//
 #include "bucatari.h"
-#include<iostream>
 
 Bucatar::Bucatar(std::string &nume, int numarul_meselor_facute):
         Angajat(nume), numarul_meselor_facute(numarul_meselor_facute) {id=++id_bucatar; }

@@ -87,20 +87,20 @@ float Chelner::getPret(std::shared_ptr<Client> &masa,std::unique_ptr<Manager>&ma
     float pret=0;
     for(auto it=masa->lista_de_mancare()->begin();it!=masa->lista_de_mancare()->end();it++){  //it se uita in lista de mancare a clientului
         if(find(it->first, *lista_aperitiv(*manager)))
-            pret=pret+(*lista_aperitiv(*manager))[it->first]*(it->second);
+            pret=pret+(*lista_aperitiv(*manager))[it->first]*(float(it->second));
         else
             if(find(it->first, *lista_fel1(*manager)))
-                pret=pret+(*lista_fel1(*manager))[it->first]*(it->second);
+                pret=pret+(*lista_fel1(*manager))[it->first]*(float(it->second));
             else
                 if(find(it->first, *lista_fel2(*manager)))
-                    pret=pret+(*lista_fel2(*manager))[it->first]*(it->second);
+                    pret=pret+(*lista_fel2(*manager))[it->first]*(float(it->second));
                 else
                     if(find(it->first, *lista_desert(*manager)))
-                        pret=pret+(*lista_desert(*manager))[it->first]*(it->second);
+                        pret=pret+(*lista_desert(*manager))[it->first]*(float(it->second));
     }
     for(auto it=masa->lista_de_bauturi()->begin();it!=masa->lista_de_bauturi()->end();it++){
         if(find(it->first, *lista_bauturi(*manager)))
-            pret=pret+( (*lista_bauturi(*manager))[it->first] )*(it->second);
+            pret=pret+( (*lista_bauturi(*manager))[it->first] )*(float(it->second));
     }
     return pret;
 }   //calculez pretul clientului
