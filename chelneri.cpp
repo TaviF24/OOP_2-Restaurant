@@ -14,6 +14,7 @@ Chelner::Chelner(const Chelner &ob): Angajat(ob),numarul_comenzilor(ob.numarul_c
 }
 
 Chelner &Chelner::operator=(const Chelner &ob){
+    Angajat::operator=(ob);
     numarul_comenzilor=ob.numarul_comenzilor;
     agenda=*lista_clienti(ob);
     pt_bauturi=*lista_bauturi_clienti(ob);
