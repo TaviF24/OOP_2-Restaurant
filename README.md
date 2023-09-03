@@ -6,6 +6,7 @@ This OOP project is about how a restaurant is working. In this project, I had to
 - inheritance: minimum a base class with 2-3 derived classes
 - upcasting
 - dynamic cast
+- smart pointers
 - (pure) virtual function
 - virtual constructors
 - copy constructor and overloading = operator
