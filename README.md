@@ -8,7 +8,7 @@ This OOP project is about how a restaurant is working. In this project, I had to
 - dynamic cast
 - smart pointers
 - (pure) virtual function
-- virtual constructors
+- virtual constructors/destructors
 - copy constructor and overloading = operator
 - exceptions: minimum two classes derived from ```std::exception``` for errors( using ```throw``` in constructor/ ```try/catch``` in main)
 - STL
