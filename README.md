@@ -14,6 +14,9 @@ This OOP project is about how a restaurant is working. In this project, I had to
 - using ```const``` as much as possible
 - having an interactive menu
 
+>[!NOTE]
+>The project is not finished, the menu has to be done. Maybe I will continue it in the future.
+
 ## What I used
 - MacOS
 - CLion 2022.3.2
